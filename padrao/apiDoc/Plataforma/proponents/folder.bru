@@ -1,0 +1,63 @@
+meta {
+  name: proponents
+}
+
+auth {
+  mode: inherit
+}
+
+script:pre-request {
+  function generateCpf(){
+    var n = [];
+    for (var i = 0; i < 9; i++) n.push(Math.floor(Math.random() * 9));
+  
+    // Primeiro dígito verificador
+    var d1 = n.map((v, i) => v * (10 - i)).reduce((a, b) => a + b);
+    d1 = 11 - (d1 % 11);
+    d1 = d1 >= 10 ? 0 : d1;
+    n.push(d1);
+  
+    // Segundo dígito verificador
+    var d2 = n.map((v, i) => v * (11 - i)).reduce((a, b) => a + b);
+    d2 = 11 - (d2 % 11);
+    d2 = d2 >= 10 ? 0 : d2;
+    n.push(d2);
+  
+    // Junta tudo em uma string (sem formatação)
+    var cpf = n.join('');
+  
+    return cpf;
+  }
+  
+  const randomCpf = generateCpf()
+    bru.setEnvVar("randomCpf", randomCpf)
+  
+    function generateCnpj(){
+    var n = [];
+    for (var i = 0; i < 8; i++) n.push(Math.floor(Math.random() * 9));
+    n = n.concat([0, 0, 0, 1]); // Fim fixo de CNPJ base (filiais)
+  
+    // Primeiro dígito verificador
+    var pesos1 = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+    var d1 = n.map((v, i) => v * pesos1[i]).reduce((a, b) => a + b);
+    d1 = 11 - (d1 % 11);
+    d1 = d1 >= 10 ? 0 : d1;
+    n.push(d1);
+  
+    // Segundo dígito verificador
+    var pesos2 = [6].concat(pesos1); // [6, 5, 4, 3, ...]
+    var d2 = n.map((v, i) => v * pesos2[i]).reduce((a, b) => a + b);
+    d2 = 11 - (d2 % 11);
+    d2 = d2 >= 10 ? 0 : d2;
+    n.push(d2);
+  
+    // Junta tudo em uma string (sem formatação)
+    var cnpj = n.join('');
+  
+    return cnpj;
+  
+  }
+  
+  const randomCnpj = generateCnpj()
+  bru.setEnvVar("randomCnpj", randomCnpj)
+}

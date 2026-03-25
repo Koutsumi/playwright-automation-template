@@ -1,0 +1,26 @@
+meta {
+  name: Download files
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{BASE_URL}}/share/submissionAssetsZipFileBatch
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "token": "yKSxXhLBkqucKX01CeoEdA",
+      "submissionIdList": [
+          "6952dac1bb7443575c00bf9b"
+      ],
+      "assetType": "PITCH"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

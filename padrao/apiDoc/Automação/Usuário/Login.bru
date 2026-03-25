@@ -1,0 +1,35 @@
+meta {
+  name: Login
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{BASE_URL}}/auth/login
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "email": "{{user_email}}",
+    "password": "{{user_email}}"
+  }
+}
+
+assert {
+  res.status: eq 200
+  res.body.STATUS: eq SUCCESS
+  res.body.MESSAGE: eq Success! You are logged in.
+}
+
+script:post-response {
+  const data = res.getBody()
+  bru.setEnvVar("userId", data._id)
+  
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

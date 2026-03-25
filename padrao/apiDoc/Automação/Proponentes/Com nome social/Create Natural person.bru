@@ -1,0 +1,114 @@
+meta {
+  name: Create Natural person
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{BASE_URL}}/proponent
+  body: json
+  auth: inherit
+}
+
+headers {
+  Origin: {{BASE_URL}}
+}
+
+body:json {
+  {
+    "proponent": {
+      "personType": "NaturalPerson",
+      "identification": {
+        "name": "{{$randomFullName}} Social Name",
+        "RG": "18.859.685-9",
+        "CPF": "{{randomCpf}}",
+        "birthDate": "1996-05-31T03:00:00.000Z",
+        "legalName": "{{$randomFullName}}"
+      },
+      "contactDetails": {
+        "email": "your.email+fakedata59343@bnpqatest.com",
+        "cellphone": "44748321633",
+        "altPhoneNumber": "",
+        "phoneNumber": ""
+      },
+      "address": {
+        "zipCode": "18010001",
+        "place": "Rua da Penha",
+        "number": "513",
+        "complement": "Reichel - Skiles",
+        "district": "Centro",
+        "city": "Sorocaba-city",
+        "state": "SP",
+        "ibgeCode": "3552205",
+        "cityName": "Sorocaba",
+        "foreignLocation": null,
+        "hasForeignAddress": false
+      },
+      "naturalPersonCulturalProfile": null,
+      "naturalPersonCulturalProfileV2": {
+        "type": "NaturalPerson",
+        "demographics": {
+          "sex": "female",
+          "gender": "cisWoman",
+          "ethnicity": "white",
+          "belongsToTraditionalCommunity": "no",
+          "maritalStatus": "stableUnion",
+          "hasDisability": "no",
+          "monthlyFamilyIncome": "upTo1500",
+          "educationLevel": "undergraduateComplete",
+          "educationKnowledgeArea": "exactAndEarthSciences",
+          "academicSegment": "Repellendus asperiores veritatis sapiente."
+        },
+        "experienceAndCulturalParticipation": {
+          "yearsOfExperienceInCulturalArea": "between2And5",
+          "hasAccessedCulturalPublicFunding": "no",
+          "culturalActivityModeLastYear": [
+            "autonomous"
+          ],
+          "mainAreaOfCulturalActivitySegment": "performingArts",
+          "mainAreaOfCulturalActivitySegmentOptions": [
+            "theater"
+          ],
+          "otherCulturalFields": [
+            "cinemaRadioTv",
+            "visualArts"
+          ],
+          "mainArtisticCulturalOccupation": "acrobata"
+        },
+        "financialAspects": {
+          "annualIncomeRelatedToCulturalActivity": "18000to36000",
+          "financialDependenceOnCulturalActivity": "essentialButNotOnly"
+        },
+        "objectivesAndMotivations": {
+          "mainObjectiveWhenParticipating": "personalAndProfessionalDevelopment",
+          "culturalContributionPlan": "culturalEducation",
+          "culturalGroupParticipation": "formalParticipation",
+          "childhoodAndAdolescenceCulturalParticipation": [
+            "artCourses",
+            "communityEvents"
+          ],
+          "attendedInstitutionsNames": "Consequatur quas porro sit aut nesciunt."
+        }
+      }
+    }
+  }
+}
+
+assert {
+  res.status: eq 200
+  res.body.STATUS: eq SUCCESS
+  res.body.MESSAGE: eq Successfully created the proponent
+}
+
+script:post-response {
+  const data = res.getBody()
+  bru.setEnvVar("naturalPersonId", data.DATA._id)
+  
+  console.log(data.DATA._id)
+  
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,0 +1,28 @@
+meta {
+  name: unauthorized list
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{BASE_URL}}/notice-groups?page=1&regsPerPage=10
+  body: none
+  auth: inherit
+}
+
+params:query {
+  page: 1
+  regsPerPage: 10
+}
+
+assert {
+  res.status: eq 403
+  res.body.STATUS: eq DENIED
+  res.body.MESSAGE: eq User is not authorized to access the requested resource
+  res.body.DATA: isEmpty
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

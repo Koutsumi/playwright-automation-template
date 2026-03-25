@@ -1,0 +1,23 @@
+meta {
+  name: List
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{BASE_URL}}/program
+  body: none
+  auth: inherit
+}
+
+assert {
+  res.status: eq 200
+  res.body.STATUS: eq SUCCESS
+  res.body.MESSAGE: eq Programs listed successfully
+  res.body.DATA: isNotEmpty
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,0 +1,250 @@
+meta {
+  name: Invalid personType
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{BASE_URL}}/proponent
+  body: json
+  auth: inherit
+}
+
+headers {
+  Origin: {{BASE_URL}}
+}
+
+body:json {
+  {
+    "proponent": {
+      "personType": "InvalidPersonType",
+      "identification": {
+        "name": "Laís Duarte Social Name",
+        "RG": "18.859.685-9",
+        "CPF": "27813228650",
+        "birthDate": "1996-05-31T03:00:00.000Z",
+        "legalName": "Marli Rita Laís Duarte"
+      },
+      "contactDetails": {
+        "email": "your.email+fakedata59343@bnpqatest.com",
+        "cellphone": "44748321633",
+        "altPhoneNumber": "",
+        "phoneNumber": ""
+      },
+      "address": {
+        "zipCode": "18010001",
+        "place": "Rua da Penha",
+        "number": "513",
+        "complement": "Reichel - Skiles",
+        "district": "Centro",
+        "city": "Sorocaba-city",
+        "state": "SP",
+        "ibgeCode": "3552205",
+        "cityName": "Sorocaba",
+        "foreignLocation": null,
+        "hasForeignAddress": false
+      },
+      "naturalPersonCulturalProfile": null,
+      "naturalPersonCulturalProfileV2": {
+        "type": "NaturalPerson",
+        "demographics": {
+          "sex": "female",
+          "gender": "cisWoman",
+          "ethnicity": "white",
+          "belongsToTraditionalCommunity": "no",
+          "maritalStatus": "stableUnion",
+          "hasDisability": "no",
+          "monthlyFamilyIncome": "upTo1500",
+          "educationLevel": "undergraduateComplete",
+          "educationKnowledgeArea": "exactAndEarthSciences",
+          "academicSegment": "Repellendus asperiores veritatis sapiente."
+        },
+        "experienceAndCulturalParticipation": {
+          "yearsOfExperienceInCulturalArea": "between2And5",
+          "hasAccessedCulturalPublicFunding": "no",
+          "culturalActivityModeLastYear": [
+            "autonomous"
+          ],
+          "mainAreaOfCulturalActivitySegment": "performingArts",
+          "mainAreaOfCulturalActivitySegmentOptions": [
+            "theater"
+          ],
+          "otherCulturalFields": [
+            "cinemaRadioTv",
+            "visualArts"
+          ],
+          "mainArtisticCulturalOccupation": "acrobata"
+        },
+        "financialAspects": {
+          "annualIncomeRelatedToCulturalActivity": "18000to36000",
+          "financialDependenceOnCulturalActivity": "essentialButNotOnly"
+        },
+        "objectivesAndMotivations": {
+          "mainObjectiveWhenParticipating": "personalAndProfessionalDevelopment",
+          "culturalContributionPlan": "culturalEducation",
+          "culturalGroupParticipation": "formalParticipation",
+          "childhoodAndAdolescenceCulturalParticipation": [
+            "artCourses",
+            "communityEvents"
+          ],
+          "attendedInstitutionsNames": "Consequatur quas porro sit aut nesciunt."
+        }
+      }
+    }
+  }
+}
+
+assert {
+  res.status: eq 400
+  res.body.STATUS: eq FAILURE
+}
+
+script:post-response {
+  if(res.status === 200){
+    const data = res.getBody()
+    bru.setEnvVar("naturalPersonId", data.DATA._id)
+  
+    console.log(data.DATA._id)
+  }
+  
+  
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
+
+example {
+  name: 400 Bad Request
+  
+  request: {
+    url: {{BASE_URL}}/proponent
+    method: POST
+    mode: json
+    headers: {
+      Origin: {{BASE_URL}}
+    }
+  
+    body:json: {
+      {
+        "proponent": {
+          "personType": "InvalidPersonType",
+          "identification": {
+            "name": "Laís Duarte Social Name",
+            "RG": "18.859.685-9",
+            "CPF": "27813228650",
+            "birthDate": "1996-05-31T03:00:00.000Z",
+            "legalName": "Marli Rita Laís Duarte"
+          },
+          "contactDetails": {
+            "email": "your.email+fakedata59343@bnpqatest.com",
+            "cellphone": "44748321633",
+            "altPhoneNumber": "",
+            "phoneNumber": ""
+          },
+          "address": {
+            "zipCode": "18010001",
+            "place": "Rua da Penha",
+            "number": "513",
+            "complement": "Reichel - Skiles",
+            "district": "Centro",
+            "city": "Sorocaba-city",
+            "state": "SP",
+            "ibgeCode": "3552205",
+            "cityName": "Sorocaba",
+            "foreignLocation": null,
+            "hasForeignAddress": false
+          },
+          "naturalPersonCulturalProfile": null,
+          "naturalPersonCulturalProfileV2": {
+            "type": "NaturalPerson",
+            "demographics": {
+              "sex": "female",
+              "gender": "cisWoman",
+              "ethnicity": "white",
+              "belongsToTraditionalCommunity": "no",
+              "maritalStatus": "stableUnion",
+              "hasDisability": "no",
+              "monthlyFamilyIncome": "upTo1500",
+              "educationLevel": "undergraduateComplete",
+              "educationKnowledgeArea": "exactAndEarthSciences",
+              "academicSegment": "Repellendus asperiores veritatis sapiente."
+            },
+            "experienceAndCulturalParticipation": {
+              "yearsOfExperienceInCulturalArea": "between2And5",
+              "hasAccessedCulturalPublicFunding": "no",
+              "culturalActivityModeLastYear": [
+                "autonomous"
+              ],
+              "mainAreaOfCulturalActivitySegment": "performingArts",
+              "mainAreaOfCulturalActivitySegmentOptions": [
+                "theater"
+              ],
+              "otherCulturalFields": [
+                "cinemaRadioTv",
+                "visualArts"
+              ],
+              "mainArtisticCulturalOccupation": "acrobata"
+            },
+            "financialAspects": {
+              "annualIncomeRelatedToCulturalActivity": "18000to36000",
+              "financialDependenceOnCulturalActivity": "essentialButNotOnly"
+            },
+            "objectivesAndMotivations": {
+              "mainObjectiveWhenParticipating": "personalAndProfessionalDevelopment",
+              "culturalContributionPlan": "culturalEducation",
+              "culturalGroupParticipation": "formalParticipation",
+              "childhoodAndAdolescenceCulturalParticipation": [
+                "artCourses",
+                "communityEvents"
+              ],
+              "attendedInstitutionsNames": "Consequatur quas porro sit aut nesciunt."
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      content-length: 145
+      content-type: application/json; charset=utf-8
+      date: Tue, 10 Mar 2026 13:28:03 GMT
+      access-control-allow-credentials: true
+      access-control-allow-origin: https://app-fomento-homolog.azurewebsites.net/api
+      etag: W/"91-GjuGOU7Fdo18LFjGEdnrMk34XZg"
+      vary: Origin
+      strict-transport-security: max-age=15778476; includeSubDomains
+      content-security-policy: default-src 'none';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' * proacstorage.blob.core.windows.net blob: data: app-milvus-widget.azurewebsites.net app-proac-chatbot-ui.azurewebsites.net app-text-wise.azurewebsites.net https://*.rybena.com.br https://rybena.com.br repository.rybena.com.br:9000 plugin.handtalk.me translation-v3.handtalk.me app-bnp-chatbot-public-ui.azurewebsites.net https://*.clarity.ms https://translate.google.com https://*.gstatic.com https://*.googleapis.com;object-src 'self' https://*.blob.core.windows.net;script-src 'self' blob: 'nonce-6b5cb82511626d4a83597834fc652498' 'unsafe-inline' 'unsafe-eval' saopaulo.sp.gov.br s3.scriptcdn.net/cdn/c7fa7451-6f95-4815-ac32-b8cc2537837a stmilvuswidget.blob.core.windows.net app-milvus-widget.azurewebsites.net app-proac-chatbot-ui.azurewebsites.net stfomentoaiprod.blob.core.windows.net app-text-wise.azurewebsites.net cdn.jsdelivr.net https://maps.googleapis.com https://*.rybena.com.br https://rybena.com.br repository.rybena.com.br:9000 plugin.handtalk.me translation-v3.handtalk.me app-bnp-chatbot-public-ui.azurewebsites.net https://*.clarity.ms www.google-analytics.com https://translate.google.com https://*.gstatic.com https://*.googleapis.com https://cdn.rybena.com.br vlibras.gov.br www.vlibras.gov.br;script-src-attr 'unsafe-inline';style-src 'self' 'unsafe-inline' saopaulo.sp.gov.br www.saopaulo.sp.gov.br fonts.googleapis.com stmilvuswidget.blob.core.windows.net app-milvus-widget.azurewebsites.net app-proac-chatbot-ui.azurewebsites.net stfomentoaiprod.blob.core.windows.net app-text-wise.azurewebsites.net https://*.rybena.com.br https://rybena.com.br repository.rybena.com.br:9000 app-bnp-chatbot-public-ui.azurewebsites.net https://*.clarity.ms https://translate.google.com https://*.gstatic.com https://*.googleapis.com https://cdn.jsdelivr.net/npm/driver.js@latest/dist/driver.css https://cdn.rybena.com.br vlibras.gov.br www.vlibras.gov.br;upgrade-insecure-requests;prefetch-src 'self';connect-src 'self' data: viacep.com.br *.azure.com *.visualstudio.com proacexpressofunctions.azurewebsites.net *.blob.core.windows.net func-fomentoai-prod.azurewebsites.net app-milvus-widget.azurewebsites.net app-proac-chatbot-ui.azurewebsites.net app-text-wise.azurewebsites.net app-regionmapper-prod.azurewebsites.net https://maps.googleapis.com https://*.rybena.com.br https://rybena.com.br repository.rybena.com.br:9000 plugin.handtalk.me translation-v3.handtalk.me app-bnp-chatbot-public-ui.azurewebsites.net https://*.clarity.ms www.google-analytics.com https://translate.google.com https://*.gstatic.com https://*.googleapis.com vlibras.gov.br www.vlibras.gov.br;frame-src 'self' app.powerbi.com app-milvus-widget.azurewebsites.net app-proac-chatbot-ui.azurewebsites.net app-text-wise.azurewebsites.net https://*.blob.core.windows.net https://*.rybena.com.br https://rybena.com.br repository.rybena.com.br:9000 plugin.handtalk.me translation-v3.handtalk.me app-bnp-chatbot-public-ui.azurewebsites.net https://*.clarity.ms https://translate.google.com https://*.gstatic.com https://*.googleapis.com;form-action 'self';worker-src 'self' blob:
+      x-dns-prefetch-control: on
+      expect-ct: max-age=0
+      x-frame-options: SAMEORIGIN
+      x-download-options: noopen
+      x-content-type-options: nosniff
+      x-permitted-cross-domain-policies: none
+      referrer-policy: no-referrer
+      x-xss-protection: 0
+      x-ratelimit-limit: 10
+      x-ratelimit-remaining: 9
+      x-ratelimit-reset: 1773149291
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "STATUS": "FAILURE",
+          "MESSAGE": "Proponent with document undefined already exists.",
+          "PTMESSAGE": "O proponente com documento undefined já existe."
+        }
+      '''
+    }
+  }
+}

@@ -1,0 +1,1744 @@
+meta {
+  name: Proponente not deleted list
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{BASE_URL}}/userProponentsNotDeleted?userId={{userId}}
+  body: none
+  auth: inherit
+}
+
+params:query {
+  userId: {{userId}}
+}
+
+assert {
+  res.status: eq 200
+  res.body.STATUS: eq SUCCESS
+  res.body.MESSAGE: eq Proponents listed successfully
+  res.body.DATA: isNotEmpty
+  res.boy.DATA.proponents: isNotEmpty
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
+
+example {
+  name: 200 OK
+  
+  request: {
+    url: {{BASE_URL}}//userProponentsNotDeleted?userId={{userId}}
+    method: GET
+    mode: none
+    params:query: {
+      userId: {{userId}}
+    }
+  }
+  
+  response: {
+    headers: {
+      content-length: 40571
+      content-type: application/json; charset=utf-8
+      date: Tue, 10 Mar 2026 19:16:14 GMT
+      access-control-allow-credentials: true
+      etag: W/"9e7b-shQq5Qc2dNh4yuc18ynXMJJ0Fe0"
+      vary: Origin
+      strict-transport-security: max-age=15778476; includeSubDomains
+      content-security-policy: default-src 'none';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' * proacstorage.blob.core.windows.net blob: data: app-milvus-widget.azurewebsites.net app-proac-chatbot-ui.azurewebsites.net app-text-wise.azurewebsites.net https://*.rybena.com.br https://rybena.com.br repository.rybena.com.br:9000 plugin.handtalk.me translation-v3.handtalk.me app-bnp-chatbot-public-ui.azurewebsites.net https://*.clarity.ms https://translate.google.com https://*.gstatic.com https://*.googleapis.com;object-src 'self' https://*.blob.core.windows.net;script-src 'self' blob: 'nonce-f49364935641e657d970580af82c8b93' 'unsafe-inline' 'unsafe-eval' saopaulo.sp.gov.br s3.scriptcdn.net/cdn/c7fa7451-6f95-4815-ac32-b8cc2537837a stmilvuswidget.blob.core.windows.net app-milvus-widget.azurewebsites.net app-proac-chatbot-ui.azurewebsites.net stfomentoaiprod.blob.core.windows.net app-text-wise.azurewebsites.net cdn.jsdelivr.net https://maps.googleapis.com https://*.rybena.com.br https://rybena.com.br repository.rybena.com.br:9000 plugin.handtalk.me translation-v3.handtalk.me app-bnp-chatbot-public-ui.azurewebsites.net https://*.clarity.ms www.google-analytics.com https://translate.google.com https://*.gstatic.com https://*.googleapis.com https://cdn.rybena.com.br vlibras.gov.br www.vlibras.gov.br;script-src-attr 'unsafe-inline';style-src 'self' 'unsafe-inline' saopaulo.sp.gov.br www.saopaulo.sp.gov.br fonts.googleapis.com stmilvuswidget.blob.core.windows.net app-milvus-widget.azurewebsites.net app-proac-chatbot-ui.azurewebsites.net stfomentoaiprod.blob.core.windows.net app-text-wise.azurewebsites.net https://*.rybena.com.br https://rybena.com.br repository.rybena.com.br:9000 app-bnp-chatbot-public-ui.azurewebsites.net https://*.clarity.ms https://translate.google.com https://*.gstatic.com https://*.googleapis.com https://cdn.jsdelivr.net/npm/driver.js@latest/dist/driver.css https://cdn.rybena.com.br vlibras.gov.br www.vlibras.gov.br;upgrade-insecure-requests;prefetch-src 'self';connect-src 'self' data: viacep.com.br *.azure.com *.visualstudio.com proacexpressofunctions.azurewebsites.net *.blob.core.windows.net func-fomentoai-prod.azurewebsites.net app-milvus-widget.azurewebsites.net app-proac-chatbot-ui.azurewebsites.net app-text-wise.azurewebsites.net app-regionmapper-prod.azurewebsites.net https://maps.googleapis.com https://*.rybena.com.br https://rybena.com.br repository.rybena.com.br:9000 plugin.handtalk.me translation-v3.handtalk.me app-bnp-chatbot-public-ui.azurewebsites.net https://*.clarity.ms www.google-analytics.com https://translate.google.com https://*.gstatic.com https://*.googleapis.com vlibras.gov.br www.vlibras.gov.br;frame-src 'self' app.powerbi.com app-milvus-widget.azurewebsites.net app-proac-chatbot-ui.azurewebsites.net app-text-wise.azurewebsites.net https://*.blob.core.windows.net https://*.rybena.com.br https://rybena.com.br repository.rybena.com.br:9000 plugin.handtalk.me translation-v3.handtalk.me app-bnp-chatbot-public-ui.azurewebsites.net https://*.clarity.ms https://translate.google.com https://*.gstatic.com https://*.googleapis.com;form-action 'self';worker-src 'self' blob:
+      x-dns-prefetch-control: on
+      expect-ct: max-age=0
+      x-frame-options: SAMEORIGIN
+      x-download-options: noopen
+      x-content-type-options: nosniff
+      x-permitted-cross-domain-policies: none
+      referrer-policy: no-referrer
+      x-xss-protection: 0
+      x-ratelimit-limit: 10
+      x-ratelimit-remaining: 9
+      x-ratelimit-reset: 1773170195
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "STATUS": "SUCCESS",
+          "MESSAGE": "Proponents listed successfully",
+          "DATA": {
+            "proponents": [
+              {
+                "contactDetails": {
+                  "isMailChecked": false,
+                  "email": "your.email+fakedata59343@bnpqatest.com",
+                  "cellphone": "44748321633",
+                  "altPhoneNumber": "",
+                  "phoneNumber": ""
+                },
+                "address": {
+                  "zipCode": "18010001",
+                  "place": "Rua da Penha",
+                  "number": "513",
+                  "complement": "Reichel - Skiles",
+                  "district": "Centro",
+                  "city": "Sorocaba-city",
+                  "state": "SP",
+                  "ibgeCode": "3552205",
+                  "cityName": "Sorocaba",
+                  "foreignLocation": null,
+                  "hasForeignAddress": false
+                },
+                "naturalPersonCulturalProfile": {
+                  "demographics": {
+                    "disabilityType": [],
+                    "academicCategory": []
+                  },
+                  "experienceAndCulturalParticipation": {
+                    "alreadyReceivedCulturalIncentivesOrScholarships": []
+                  },
+                  "objectivesAndMotivations": {
+                    "mainObjectiveWhenParticipating": [],
+                    "contributionToCulturalEnrichment": [],
+                    "childhoodAndAdolescenceCulturalParticipation": [],
+                    "participationInGroupsOrCulturalMovements": []
+                  },
+                  "type": "NaturalPerson"
+                },
+                "legalPersonCulturalProfile": null,
+                "usersQueue": [],
+                "users": [
+                  {
+                    "annualCheckProponents": {
+                      "wasChecked": true,
+                      "date": "2026-03-10T18:32:07.041Z"
+                    },
+                    "profileImageURL": null,
+                    "provider": "local",
+                    "roles": [
+                      "proponent"
+                    ],
+                    "isMailChecked": false,
+                    "_id": "698a0d00e47a0e0820253e30",
+                    "firstName": "Bruno",
+                    "lastName": "teste",
+                    "email": "proponente_completo@bnp.com.br",
+                    "creationDate": "2026-02-09T16:36:16.740Z",
+                    "createdAt": "2026-02-09T16:36:16.743Z",
+                    "updatedAt": "2026-03-10T18:32:07.041Z",
+                    "defaultProponent": "698a0f28e47a0e0820253ff5"
+                  }
+                ],
+                "blockedUsers": [],
+                "members": [],
+                "_id": "698a0f28e47a0e0820253ff5",
+                "personType": "NaturalPerson",
+                "identification": {
+                  "name": "",
+                  "RG": "18.859.685-9",
+                  "CPF": "07820757620",
+                  "birthDate": "1996-05-31T03:00:00.000Z",
+                  "legalName": "Marli Rita Laís Duarte"
+                },
+                "naturalPersonCulturalProfileV2": {
+                  "type": "NaturalPerson",
+                  "demographics": {
+                    "sex": "female",
+                    "gender": "cisWoman",
+                    "ethnicity": "white",
+                    "belongsToTraditionalCommunity": "no",
+                    "maritalStatus": "stableUnion",
+                    "hasDisability": "no",
+                    "monthlyFamilyIncome": "upTo1500",
+                    "educationLevel": "undergraduateComplete",
+                    "educationKnowledgeArea": "exactAndEarthSciences",
+                    "academicSegment": "Repellendus asperiores veritatis sapiente."
+                  },
+                  "experienceAndCulturalParticipation": {
+                    "yearsOfExperienceInCulturalArea": "between2And5",
+                    "hasAccessedCulturalPublicFunding": "no",
+                    "culturalActivityModeLastYear": [
+                      "autonomous"
+                    ],
+                    "mainAreaOfCulturalActivitySegment": "performingArts",
+                    "mainAreaOfCulturalActivitySegmentOptions": [
+                      "theater"
+                    ],
+                    "otherCulturalFields": [
+                      "cinemaRadioTv",
+                      "visualArts"
+                    ],
+                    "mainArtisticCulturalOccupation": "acrobata"
+                  },
+                  "financialAspects": {
+                    "annualIncomeRelatedToCulturalActivity": "18000to36000",
+                    "financialDependenceOnCulturalActivity": "essentialButNotOnly"
+                  },
+                  "objectivesAndMotivations": {
+                    "mainObjectiveWhenParticipating": "personalAndProfessionalDevelopment",
+                    "culturalContributionPlan": "culturalEducation",
+                    "culturalGroupParticipation": "formalParticipation",
+                    "childhoodAndAdolescenceCulturalParticipation": [
+                      "artCourses",
+                      "communityEvents"
+                    ],
+                    "attendedInstitutionsNames": "Consequatur quas porro sit aut nesciunt."
+                  }
+                },
+                "creationUser": {
+                  "annualCheckProponents": {
+                    "wasChecked": true,
+                    "date": "2026-03-10T18:32:07.041Z"
+                  },
+                  "profileImageURL": null,
+                  "provider": "local",
+                  "roles": [
+                    "proponent"
+                  ],
+                  "isMailChecked": false,
+                  "_id": "698a0d00e47a0e0820253e30",
+                  "firstName": "Bruno",
+                  "lastName": "teste",
+                  "email": "proponente_completo@bnp.com.br",
+                  "creationDate": "2026-02-09T16:36:16.740Z",
+                  "createdAt": "2026-02-09T16:36:16.743Z",
+                  "updatedAt": "2026-03-10T18:32:07.041Z",
+                  "defaultProponent": "698a0f28e47a0e0820253ff5"
+                },
+                "status": "VALIDATED",
+                "creationDate": "2026-02-09T16:45:28.577Z",
+                "createdAt": "2026-02-09T16:45:28.579Z",
+                "updatedAt": "2026-02-09T16:46:48.655Z",
+                "__v": 0
+              },
+              {
+                "contactDetails": {
+                  "isMailChecked": false,
+                  "email": "your.email+fakedata59343@bnpqatest.com",
+                  "cellphone": "44748321633",
+                  "altPhoneNumber": "",
+                  "phoneNumber": ""
+                },
+                "address": {
+                  "zipCode": "18010001",
+                  "place": "Rua da Penha",
+                  "number": "513",
+                  "complement": "Reichel - Skiles",
+                  "district": "Centro",
+                  "city": "Sorocaba-city",
+                  "state": "SP",
+                  "ibgeCode": "3552205",
+                  "cityName": "Sorocaba",
+                  "foreignLocation": null,
+                  "hasForeignAddress": false
+                },
+                "naturalPersonCulturalProfile": {
+                  "demographics": {
+                    "disabilityType": [],
+                    "academicCategory": []
+                  },
+                  "experienceAndCulturalParticipation": {
+                    "alreadyReceivedCulturalIncentivesOrScholarships": []
+                  },
+                  "objectivesAndMotivations": {
+                    "mainObjectiveWhenParticipating": [],
+                    "contributionToCulturalEnrichment": [],
+                    "childhoodAndAdolescenceCulturalParticipation": [],
+                    "participationInGroupsOrCulturalMovements": []
+                  },
+                  "type": "NaturalPerson"
+                },
+                "legalPersonCulturalProfile": {
+                  "structureAndResources": {
+                    "currentFundingSources": []
+                  },
+                  "experienceAndPartnerships": {
+                    "establishedPartnershipsWithOtherEntities": []
+                  },
+                  "socialAndCommunityImpact": {
+                    "contributionToSocialAndCulturalInclusion": [],
+                    "socialObjectivesBeyondArtistic": []
+                  }
+                },
+                "usersQueue": [],
+                "users": [
+                  {
+                    "annualCheckProponents": {
+                      "wasChecked": true,
+                      "date": "2026-03-10T18:32:07.041Z"
+                    },
+                    "profileImageURL": null,
+                    "provider": "local",
+                    "roles": [
+                      "proponent"
+                    ],
+                    "isMailChecked": false,
+                    "_id": "698a0d00e47a0e0820253e30",
+                    "firstName": "Bruno",
+                    "lastName": "teste",
+                    "email": "proponente_completo@bnp.com.br",
+                    "creationDate": "2026-02-09T16:36:16.740Z",
+                    "createdAt": "2026-02-09T16:36:16.743Z",
+                    "updatedAt": "2026-03-10T18:32:07.041Z",
+                    "defaultProponent": "698a0f28e47a0e0820253ff5"
+                  }
+                ],
+                "blockedUsers": [],
+                "members": [],
+                "_id": "698a0f7fe47a0e0820253ff6",
+                "personType": "NaturalPerson",
+                "identification": {
+                  "name": "Laís Duarte Social Name",
+                  "RG": "18.859.685-9",
+                  "CPF": "07734176801",
+                  "birthDate": "1996-05-31T03:00:00.000Z",
+                  "legalName": "Marli Rita Laís Duarte"
+                },
+                "naturalPersonCulturalProfileV2": {
+                  "type": "NaturalPerson",
+                  "demographics": {
+                    "sex": "female",
+                    "gender": "cisWoman",
+                    "ethnicity": "white",
+                    "belongsToTraditionalCommunity": "no",
+                    "maritalStatus": "stableUnion",
+                    "hasDisability": "no",
+                    "monthlyFamilyIncome": "upTo1500",
+                    "educationLevel": "undergraduateComplete",
+                    "educationKnowledgeArea": "exactAndEarthSciences",
+                    "academicSegment": "Repellendus asperiores veritatis sapiente."
+                  },
+                  "experienceAndCulturalParticipation": {
+                    "yearsOfExperienceInCulturalArea": "between2And5",
+                    "hasAccessedCulturalPublicFunding": "no",
+                    "culturalActivityModeLastYear": [
+                      "autonomous"
+                    ],
+                    "mainAreaOfCulturalActivitySegment": "performingArts",
+                    "mainAreaOfCulturalActivitySegmentOptions": [
+                      "theater"
+                    ],
+                    "otherCulturalFields": [
+                      "cinemaRadioTv",
+                      "visualArts"
+                    ],
+                    "mainArtisticCulturalOccupation": "acrobata"
+                  },
+                  "financialAspects": {
+                    "annualIncomeRelatedToCulturalActivity": "18000to36000",
+                    "financialDependenceOnCulturalActivity": "essentialButNotOnly"
+                  },
+                  "objectivesAndMotivations": {
+                    "mainObjectiveWhenParticipating": "personalAndProfessionalDevelopment",
+                    "culturalContributionPlan": "culturalEducation",
+                    "culturalGroupParticipation": "formalParticipation",
+                    "childhoodAndAdolescenceCulturalParticipation": [
+                      "artCourses",
+                      "communityEvents"
+                    ],
+                    "attendedInstitutionsNames": "Consequatur quas porro sit aut nesciunt."
+                  }
+                },
+                "creationUser": {
+                  "annualCheckProponents": {
+                    "wasChecked": true,
+                    "date": "2026-03-10T18:32:07.041Z"
+                  },
+                  "profileImageURL": null,
+                  "provider": "local",
+                  "roles": [
+                    "proponent"
+                  ],
+                  "isMailChecked": false,
+                  "_id": "698a0d00e47a0e0820253e30",
+                  "firstName": "Bruno",
+                  "lastName": "teste",
+                  "email": "proponente_completo@bnp.com.br",
+                  "creationDate": "2026-02-09T16:36:16.740Z",
+                  "createdAt": "2026-02-09T16:36:16.743Z",
+                  "updatedAt": "2026-03-10T18:32:07.041Z",
+                  "defaultProponent": "698a0f28e47a0e0820253ff5"
+                },
+                "status": "VALIDATED",
+                "creationDate": "2026-02-09T16:46:55.183Z",
+                "createdAt": "2026-02-09T16:46:55.186Z",
+                "updatedAt": "2026-02-09T16:46:55.186Z",
+                "__v": 0
+              },
+              {
+                "contactDetails": {
+                  "address": {
+                    "zipCode": "12311240",
+                    "place": "Rua Francisca de Freitas Martins",
+                    "number": "11",
+                    "complement": null,
+                    "district": "Parque Califórnia",
+                    "city": "Jacareí-city",
+                    "state": "SP",
+                    "ibgeCode": null,
+                    "cityName": null
+                  },
+                  "isMailChecked": false,
+                  "responsibleName": "Ronnie Kling I",
+                  "responsibleSocialName": "Cecilia Cummings Social Name",
+                  "birthDate": "2004-04-16T03:00:00.000Z",
+                  "email": "proponente_completo@bnp.com.br",
+                  "cellphone": "11111111111",
+                  "RG": "1111111111",
+                  "CPF": "35510621370",
+                  "occupation": "teste"
+                },
+                "address": {
+                  "zipCode": "13050421",
+                  "place": "Rua Tietê",
+                  "number": "932",
+                  "complement": null,
+                  "district": "Cidade Jardim",
+                  "city": "Campinas-city",
+                  "state": "SP",
+                  "ibgeCode": null
+                },
+                "naturalPersonCulturalProfile": {
+                  "demographics": {
+                    "disabilityType": [],
+                    "academicCategory": []
+                  },
+                  "experienceAndCulturalParticipation": {
+                    "alreadyReceivedCulturalIncentivesOrScholarships": []
+                  },
+                  "objectivesAndMotivations": {
+                    "mainObjectiveWhenParticipating": [],
+                    "contributionToCulturalEnrichment": [],
+                    "childhoodAndAdolescenceCulturalParticipation": [],
+                    "participationInGroupsOrCulturalMovements": []
+                  }
+                },
+                "legalPersonCulturalProfile": {
+                  "structureAndResources": {
+                    "currentFundingSources": []
+                  },
+                  "experienceAndPartnerships": {
+                    "establishedPartnershipsWithOtherEntities": []
+                  },
+                  "socialAndCommunityImpact": {
+                    "contributionToSocialAndCulturalInclusion": [],
+                    "socialObjectivesBeyondArtistic": []
+                  },
+                  "type": "LegalPerson"
+                },
+                "usersQueue": [],
+                "users": [
+                  {
+                    "annualCheckProponents": {
+                      "wasChecked": true,
+                      "date": "2026-03-10T18:32:07.041Z"
+                    },
+                    "profileImageURL": null,
+                    "provider": "local",
+                    "roles": [
+                      "proponent"
+                    ],
+                    "isMailChecked": false,
+                    "_id": "698a0d00e47a0e0820253e30",
+                    "firstName": "Bruno",
+                    "lastName": "teste",
+                    "email": "proponente_completo@bnp.com.br",
+                    "creationDate": "2026-02-09T16:36:16.740Z",
+                    "createdAt": "2026-02-09T16:36:16.743Z",
+                    "updatedAt": "2026-03-10T18:32:07.041Z",
+                    "defaultProponent": "698a0f28e47a0e0820253ff5"
+                  }
+                ],
+                "blockedUsers": [],
+                "members": [],
+                "_id": "698a1690bb26b208226f0437",
+                "personType": "LegalPerson",
+                "identification": {
+                  "CNPJ": "41724175000129",
+                  "corporateName": "Harvey and Sons",
+                  "tradingName": "Klocko, Boehm and Keebler",
+                  "website": null,
+                  "profitNature": false,
+                  "corporationBirthDate": "1999-08-04T03:00:00.000Z",
+                  "isMei": false,
+                  "hasPartners": false
+                },
+                "legalPersonCulturalProfileV2": {
+                  "type": "LegalPerson",
+                  "characteristicsAndAreasOfOperation": {
+                    "typeOfInstitutionOrCollective": "foundation",
+                    "CNAE": "54645645"
+                  },
+                  "structureAndResources": {
+                    "numberOfMembersOrEmployees": "lessThan5",
+                    "annualBudget": "upTo80000",
+                    "currentFundingSources": [
+                      "corporateSponsorship",
+                      "donations"
+                    ],
+                    "currentFundingSourcesDescription": null
+                  },
+                  "experienceAndPartnerships": {
+                    "yearsOfOrganizationExperience": "between2And5",
+                    "typesOfPartnerships": [
+                      "corporateSponsorship",
+                      "technicalCollaboration"
+                    ],
+                    "numberOfPartnerships": "none",
+                    "mainArtisticCulturalSegment": "craftActivities",
+                    "mainArtisticCulturalSegmentDescription": null,
+                    "hasAccessedPublicCulturalFundingBefore": "no",
+                    "publicCulturalFundingSourcesAccessed": null,
+                    "publicCulturalFundingSourcesAccessedDescription": null
+                  },
+                  "socialAndCommunityImpact": {
+                    "socialImpactAndCulturalInclusionActions": [
+                      "professionalTraining",
+                      "culturalEducationAndMediation"
+                    ],
+                    "socialImpactAndCulturalInclusionActionsDescription": null,
+                    "socialObjectivesBeyondArtistic": [
+                      "communityDevelopment",
+                      "socialAndHumanDevelopment"
+                    ]
+                  },
+                  "responsable": {
+                    "type": "NaturalPerson",
+                    "demographics": {
+                      "sex": "male",
+                      "gender": "cisMan",
+                      "genderDescription": null,
+                      "ethnicity": "yellow",
+                      "belongsToTraditionalCommunity": "native",
+                      "belongsToTraditionalCommunityDescription": null,
+                      "maritalStatus": "stableUnion",
+                      "maritalStatusDescription": null,
+                      "hasDisability": "no",
+                      "disabilityType": null,
+                      "disabilityTypeDescription": null,
+                      "monthlyFamilyIncome": "3000To6000",
+                      "educationLevel": "undergraduateIncomplete",
+                      "educationKnowledgeArea": "biologicalSciences",
+                      "academicSegment": "Testar"
+                    },
+                    "experienceAndCulturalParticipation": {
+                      "yearsOfExperienceInCulturalArea": "between2And5",
+                      "hasAccessedCulturalPublicFunding": "no",
+                      "accessedCulturalPublicFunding": null,
+                      "accessedCulturalPublicFundingDescription": null,
+                      "numberOfProjectsApproved": null,
+                      "culturalActivityModeLastYear": [
+                        "institutionEmployee"
+                      ],
+                      "mainAreaOfCulturalActivitySegment": "architecture",
+                      "mainAreaOfCulturalActivitySegmentDescription": null,
+                      "mainAreaOfCulturalActivitySegmentOptions": [
+                        "architectureProjects",
+                        "heritagePreservation"
+                      ],
+                      "otherCulturalFields": [
+                        "craftActivities"
+                      ],
+                      "otherCulturalFieldsDescription": null,
+                      "mainArtisticCulturalOccupation": "aderecista",
+                      "mainArtisticCulturalOccupationDescription": null
+                    },
+                    "financialAspects": {
+                      "annualIncomeRelatedToCulturalActivity": "upTo18000",
+                      "financialDependenceOnCulturalActivity": "essentialButNotOnly"
+                    },
+                    "objectivesAndMotivations": {
+                      "mainObjectiveWhenParticipating": "communityContribution",
+                      "culturalContributionPlan": "culturalEducation",
+                      "culturalGroupParticipation": "formalParticipation",
+                      "childhoodAndAdolescenceCulturalParticipation": [
+                        "schoolGroups"
+                      ],
+                      "attendedInstitutionsNames": null
+                    }
+                  }
+                },
+                "creationUser": {
+                  "annualCheckProponents": {
+                    "wasChecked": true,
+                    "date": "2026-03-10T18:32:07.041Z"
+                  },
+                  "profileImageURL": null,
+                  "provider": "local",
+                  "roles": [
+                    "proponent"
+                  ],
+                  "isMailChecked": false,
+                  "_id": "698a0d00e47a0e0820253e30",
+                  "firstName": "Bruno",
+                  "lastName": "teste",
+                  "email": "proponente_completo@bnp.com.br",
+                  "creationDate": "2026-02-09T16:36:16.740Z",
+                  "createdAt": "2026-02-09T16:36:16.743Z",
+                  "updatedAt": "2026-03-10T18:32:07.041Z",
+                  "defaultProponent": "698a0f28e47a0e0820253ff5"
+                },
+                "status": "VALIDATED",
+                "creationDate": "2026-02-09T17:17:04.054Z",
+                "createdAt": "2026-02-09T17:17:04.059Z",
+                "updatedAt": "2026-02-09T17:17:04.059Z",
+                "__v": 0
+              },
+              {
+                "contactDetails": {
+                  "address": {
+                    "zipCode": "12311240",
+                    "place": "Rua Francisca de Freitas Martins",
+                    "number": "11",
+                    "complement": null,
+                    "district": "Parque Califórnia",
+                    "city": "Jacareí-city",
+                    "state": "SP",
+                    "ibgeCode": null,
+                    "cityName": null
+                  },
+                  "isMailChecked": false,
+                  "responsibleName": "Miss Dawn Homenick",
+                  "birthDate": "2004-04-16T03:00:00.000Z",
+                  "email": "proponente_completo@bnp.com.br",
+                  "cellphone": "11111111111",
+                  "RG": "1111111111",
+                  "CPF": "87833685232",
+                  "occupation": "teste"
+                },
+                "address": {
+                  "zipCode": "13050421",
+                  "place": "Rua Tietê",
+                  "number": "932",
+                  "complement": null,
+                  "district": "Cidade Jardim",
+                  "city": "Campinas-city",
+                  "state": "SP",
+                  "ibgeCode": null
+                },
+                "naturalPersonCulturalProfile": {
+                  "demographics": {
+                    "disabilityType": [],
+                    "academicCategory": []
+                  },
+                  "experienceAndCulturalParticipation": {
+                    "alreadyReceivedCulturalIncentivesOrScholarships": []
+                  },
+                  "objectivesAndMotivations": {
+                    "mainObjectiveWhenParticipating": [],
+                    "contributionToCulturalEnrichment": [],
+                    "childhoodAndAdolescenceCulturalParticipation": [],
+                    "participationInGroupsOrCulturalMovements": []
+                  }
+                },
+                "legalPersonCulturalProfile": {
+                  "structureAndResources": {
+                    "currentFundingSources": []
+                  },
+                  "experienceAndPartnerships": {
+                    "establishedPartnershipsWithOtherEntities": []
+                  },
+                  "socialAndCommunityImpact": {
+                    "contributionToSocialAndCulturalInclusion": [],
+                    "socialObjectivesBeyondArtistic": []
+                  },
+                  "type": "LegalPerson"
+                },
+                "usersQueue": [],
+                "users": [
+                  {
+                    "annualCheckProponents": {
+                      "wasChecked": true,
+                      "date": "2026-03-10T18:32:07.041Z"
+                    },
+                    "profileImageURL": null,
+                    "provider": "local",
+                    "roles": [
+                      "proponent"
+                    ],
+                    "isMailChecked": false,
+                    "_id": "698a0d00e47a0e0820253e30",
+                    "firstName": "Bruno",
+                    "lastName": "teste",
+                    "email": "proponente_completo@bnp.com.br",
+                    "creationDate": "2026-02-09T16:36:16.740Z",
+                    "createdAt": "2026-02-09T16:36:16.743Z",
+                    "updatedAt": "2026-03-10T18:32:07.041Z",
+                    "defaultProponent": "698a0f28e47a0e0820253ff5"
+                  }
+                ],
+                "blockedUsers": [],
+                "members": [],
+                "_id": "698a16a1bb26b208226f0438",
+                "personType": "LegalPerson",
+                "identification": {
+                  "CNPJ": "42641782000198",
+                  "corporateName": "Medhurst, Waters and Cummings",
+                  "tradingName": "Conn - Kozey",
+                  "website": null,
+                  "profitNature": false,
+                  "corporationBirthDate": "1999-08-04T03:00:00.000Z",
+                  "isMei": false,
+                  "hasPartners": false
+                },
+                "legalPersonCulturalProfileV2": {
+                  "type": "LegalPerson",
+                  "characteristicsAndAreasOfOperation": {
+                    "typeOfInstitutionOrCollective": "foundation",
+                    "CNAE": "54645645"
+                  },
+                  "structureAndResources": {
+                    "numberOfMembersOrEmployees": "lessThan5",
+                    "annualBudget": "upTo80000",
+                    "currentFundingSources": [
+                      "corporateSponsorship",
+                      "donations"
+                    ],
+                    "currentFundingSourcesDescription": null
+                  },
+                  "experienceAndPartnerships": {
+                    "yearsOfOrganizationExperience": "between2And5",
+                    "typesOfPartnerships": [
+                      "corporateSponsorship",
+                      "technicalCollaboration"
+                    ],
+                    "numberOfPartnerships": "none",
+                    "mainArtisticCulturalSegment": "craftActivities",
+                    "mainArtisticCulturalSegmentDescription": null,
+                    "hasAccessedPublicCulturalFundingBefore": "no",
+                    "publicCulturalFundingSourcesAccessed": null,
+                    "publicCulturalFundingSourcesAccessedDescription": null
+                  },
+                  "socialAndCommunityImpact": {
+                    "socialImpactAndCulturalInclusionActions": [
+                      "professionalTraining",
+                      "culturalEducationAndMediation"
+                    ],
+                    "socialImpactAndCulturalInclusionActionsDescription": null,
+                    "socialObjectivesBeyondArtistic": [
+                      "communityDevelopment",
+                      "socialAndHumanDevelopment"
+                    ]
+                  },
+                  "responsable": {
+                    "type": "NaturalPerson",
+                    "demographics": {
+                      "sex": "male",
+                      "gender": "cisMan",
+                      "genderDescription": null,
+                      "ethnicity": "yellow",
+                      "belongsToTraditionalCommunity": "native",
+                      "belongsToTraditionalCommunityDescription": null,
+                      "maritalStatus": "stableUnion",
+                      "maritalStatusDescription": null,
+                      "hasDisability": "no",
+                      "disabilityType": null,
+                      "disabilityTypeDescription": null,
+                      "monthlyFamilyIncome": "3000To6000",
+                      "educationLevel": "undergraduateIncomplete",
+                      "educationKnowledgeArea": "biologicalSciences",
+                      "academicSegment": "Testar"
+                    },
+                    "experienceAndCulturalParticipation": {
+                      "yearsOfExperienceInCulturalArea": "between2And5",
+                      "hasAccessedCulturalPublicFunding": "no",
+                      "accessedCulturalPublicFunding": null,
+                      "accessedCulturalPublicFundingDescription": null,
+                      "numberOfProjectsApproved": null,
+                      "culturalActivityModeLastYear": [
+                        "institutionEmployee"
+                      ],
+                      "mainAreaOfCulturalActivitySegment": "architecture",
+                      "mainAreaOfCulturalActivitySegmentDescription": null,
+                      "mainAreaOfCulturalActivitySegmentOptions": [
+                        "architectureProjects",
+                        "heritagePreservation"
+                      ],
+                      "otherCulturalFields": [
+                        "craftActivities"
+                      ],
+                      "otherCulturalFieldsDescription": null,
+                      "mainArtisticCulturalOccupation": "aderecista",
+                      "mainArtisticCulturalOccupationDescription": null
+                    },
+                    "financialAspects": {
+                      "annualIncomeRelatedToCulturalActivity": "upTo18000",
+                      "financialDependenceOnCulturalActivity": "essentialButNotOnly"
+                    },
+                    "objectivesAndMotivations": {
+                      "mainObjectiveWhenParticipating": "communityContribution",
+                      "culturalContributionPlan": "culturalEducation",
+                      "culturalGroupParticipation": "formalParticipation",
+                      "childhoodAndAdolescenceCulturalParticipation": [
+                        "schoolGroups"
+                      ],
+                      "attendedInstitutionsNames": null
+                    }
+                  }
+                },
+                "creationUser": {
+                  "annualCheckProponents": {
+                    "wasChecked": true,
+                    "date": "2026-03-10T18:32:07.041Z"
+                  },
+                  "profileImageURL": null,
+                  "provider": "local",
+                  "roles": [
+                    "proponent"
+                  ],
+                  "isMailChecked": false,
+                  "_id": "698a0d00e47a0e0820253e30",
+                  "firstName": "Bruno",
+                  "lastName": "teste",
+                  "email": "proponente_completo@bnp.com.br",
+                  "creationDate": "2026-02-09T16:36:16.740Z",
+                  "createdAt": "2026-02-09T16:36:16.743Z",
+                  "updatedAt": "2026-03-10T18:32:07.041Z",
+                  "defaultProponent": "698a0f28e47a0e0820253ff5"
+                },
+                "status": "VALIDATED",
+                "creationDate": "2026-02-09T17:17:21.851Z",
+                "createdAt": "2026-02-09T17:17:21.854Z",
+                "updatedAt": "2026-02-09T17:17:21.854Z",
+                "__v": 0
+              },
+              {
+                "contactDetails": {
+                  "address": {
+                    "zipCode": "14176430",
+                    "place": "Avenida Doutor Romeu Bonini",
+                    "number": "11",
+                    "complement": null,
+                    "district": "Chácaras Recreio Planalto",
+                    "city": "Sertãozinho-city",
+                    "state": "SP",
+                    "ibgeCode": null,
+                    "cityName": null
+                  },
+                  "isMailChecked": false,
+                  "responsibleName": "Marta Lynch",
+                  "responsibleSocialName": "Boyd Reynolds II Social Name",
+                  "birthDate": "2004-04-16T03:00:00.000Z",
+                  "email": "proponente_completo@bnp.com.br",
+                  "cellphone": "11111111111",
+                  "RG": "10.814.481-1",
+                  "CPF": "43358835600",
+                  "occupation": "teste"
+                },
+                "address": {
+                  "zipCode": "13050815",
+                  "place": "Rua Odilon Rodrigues Nunes",
+                  "number": "498",
+                  "complement": null,
+                  "district": "Jardim Capivari",
+                  "city": "Campinas-city",
+                  "state": "SP",
+                  "ibgeCode": null
+                },
+                "naturalPersonCulturalProfile": {
+                  "demographics": {
+                    "disabilityType": [],
+                    "academicCategory": []
+                  },
+                  "experienceAndCulturalParticipation": {
+                    "alreadyReceivedCulturalIncentivesOrScholarships": []
+                  },
+                  "objectivesAndMotivations": {
+                    "mainObjectiveWhenParticipating": [],
+                    "contributionToCulturalEnrichment": [],
+                    "childhoodAndAdolescenceCulturalParticipation": [],
+                    "participationInGroupsOrCulturalMovements": []
+                  }
+                },
+                "legalPersonCulturalProfile": {
+                  "structureAndResources": {
+                    "currentFundingSources": []
+                  },
+                  "experienceAndPartnerships": {
+                    "establishedPartnershipsWithOtherEntities": []
+                  },
+                  "socialAndCommunityImpact": {
+                    "contributionToSocialAndCulturalInclusion": [],
+                    "socialObjectivesBeyondArtistic": []
+                  },
+                  "type": "Cooperative"
+                },
+                "usersQueue": [],
+                "users": [
+                  {
+                    "annualCheckProponents": {
+                      "wasChecked": true,
+                      "date": "2026-03-10T18:32:07.041Z"
+                    },
+                    "profileImageURL": null,
+                    "provider": "local",
+                    "roles": [
+                      "proponent"
+                    ],
+                    "isMailChecked": false,
+                    "_id": "698a0d00e47a0e0820253e30",
+                    "firstName": "Bruno",
+                    "lastName": "teste",
+                    "email": "proponente_completo@bnp.com.br",
+                    "creationDate": "2026-02-09T16:36:16.740Z",
+                    "createdAt": "2026-02-09T16:36:16.743Z",
+                    "updatedAt": "2026-03-10T18:32:07.041Z",
+                    "defaultProponent": "698a0f28e47a0e0820253ff5"
+                  }
+                ],
+                "blockedUsers": [],
+                "members": [],
+                "_id": "698a16adbb26b208226f0439",
+                "personType": "Cooperative",
+                "identification": {
+                  "CNPJ": "60325618000153",
+                  "corporateName": "Zulauf Group",
+                  "tradingName": "Kshlerin Group",
+                  "website": null,
+                  "profitNature": false,
+                  "corporationBirthDate": "1999-08-04T03:00:00.000Z",
+                  "isMei": false,
+                  "hasPartners": false
+                },
+                "legalPersonCulturalProfileV2": {
+                  "type": "LegalPerson",
+                  "characteristicsAndAreasOfOperation": {
+                    "typeOfInstitutionOrCollective": "foundation",
+                    "CNAE": "54645645"
+                  },
+                  "structureAndResources": {
+                    "numberOfMembersOrEmployees": "lessThan5",
+                    "annualBudget": "upTo80000",
+                    "currentFundingSources": [
+                      "corporateSponsorship",
+                      "donations"
+                    ],
+                    "currentFundingSourcesDescription": null
+                  },
+                  "experienceAndPartnerships": {
+                    "yearsOfOrganizationExperience": "between2And5",
+                    "typesOfPartnerships": [
+                      "corporateSponsorship",
+                      "technicalCollaboration"
+                    ],
+                    "numberOfPartnerships": "none",
+                    "mainArtisticCulturalSegment": "craftActivities",
+                    "mainArtisticCulturalSegmentDescription": null,
+                    "hasAccessedPublicCulturalFundingBefore": "no",
+                    "publicCulturalFundingSourcesAccessed": null,
+                    "publicCulturalFundingSourcesAccessedDescription": null
+                  },
+                  "socialAndCommunityImpact": {
+                    "socialImpactAndCulturalInclusionActions": [
+                      "professionalTraining",
+                      "culturalEducationAndMediation"
+                    ],
+                    "socialImpactAndCulturalInclusionActionsDescription": null,
+                    "socialObjectivesBeyondArtistic": [
+                      "communityDevelopment",
+                      "socialAndHumanDevelopment"
+                    ]
+                  },
+                  "responsable": {
+                    "type": "NaturalPerson",
+                    "demographics": {
+                      "sex": "male",
+                      "gender": "cisMan",
+                      "genderDescription": null,
+                      "ethnicity": "yellow",
+                      "belongsToTraditionalCommunity": "native",
+                      "belongsToTraditionalCommunityDescription": null,
+                      "maritalStatus": "stableUnion",
+                      "maritalStatusDescription": null,
+                      "hasDisability": "no",
+                      "disabilityType": null,
+                      "disabilityTypeDescription": null,
+                      "monthlyFamilyIncome": "3000To6000",
+                      "educationLevel": "undergraduateIncomplete",
+                      "educationKnowledgeArea": "biologicalSciences",
+                      "academicSegment": "Testar"
+                    },
+                    "experienceAndCulturalParticipation": {
+                      "yearsOfExperienceInCulturalArea": "between2And5",
+                      "hasAccessedCulturalPublicFunding": "no",
+                      "accessedCulturalPublicFunding": null,
+                      "accessedCulturalPublicFundingDescription": null,
+                      "numberOfProjectsApproved": null,
+                      "culturalActivityModeLastYear": [
+                        "institutionEmployee"
+                      ],
+                      "mainAreaOfCulturalActivitySegment": "architecture",
+                      "mainAreaOfCulturalActivitySegmentDescription": null,
+                      "mainAreaOfCulturalActivitySegmentOptions": [
+                        "architectureProjects",
+                        "heritagePreservation"
+                      ],
+                      "otherCulturalFields": [
+                        "craftActivities"
+                      ],
+                      "otherCulturalFieldsDescription": null,
+                      "mainArtisticCulturalOccupation": "aderecista",
+                      "mainArtisticCulturalOccupationDescription": null
+                    },
+                    "financialAspects": {
+                      "annualIncomeRelatedToCulturalActivity": "upTo18000",
+                      "financialDependenceOnCulturalActivity": "essentialButNotOnly"
+                    },
+                    "objectivesAndMotivations": {
+                      "mainObjectiveWhenParticipating": "communityContribution",
+                      "culturalContributionPlan": "culturalEducation",
+                      "culturalGroupParticipation": "formalParticipation",
+                      "childhoodAndAdolescenceCulturalParticipation": [
+                        "schoolGroups"
+                      ],
+                      "attendedInstitutionsNames": null
+                    }
+                  }
+                },
+                "creationUser": {
+                  "annualCheckProponents": {
+                    "wasChecked": true,
+                    "date": "2026-03-10T18:32:07.041Z"
+                  },
+                  "profileImageURL": null,
+                  "provider": "local",
+                  "roles": [
+                    "proponent"
+                  ],
+                  "isMailChecked": false,
+                  "_id": "698a0d00e47a0e0820253e30",
+                  "firstName": "Bruno",
+                  "lastName": "teste",
+                  "email": "proponente_completo@bnp.com.br",
+                  "creationDate": "2026-02-09T16:36:16.740Z",
+                  "createdAt": "2026-02-09T16:36:16.743Z",
+                  "updatedAt": "2026-03-10T18:32:07.041Z",
+                  "defaultProponent": "698a0f28e47a0e0820253ff5"
+                },
+                "status": "VALIDATED",
+                "creationDate": "2026-02-09T17:17:33.732Z",
+                "createdAt": "2026-02-09T17:17:33.736Z",
+                "updatedAt": "2026-02-09T17:17:33.736Z",
+                "__v": 0
+              },
+              {
+                "contactDetails": {
+                  "address": {
+                    "zipCode": "14176430",
+                    "place": "Avenida Doutor Romeu Bonini",
+                    "number": "11",
+                    "complement": null,
+                    "district": "Chácaras Recreio Planalto",
+                    "city": "Sertãozinho-city",
+                    "state": "SP",
+                    "ibgeCode": null,
+                    "cityName": null
+                  },
+                  "isMailChecked": false,
+                  "responsibleName": "Hubert Emmerich",
+                  "birthDate": "2004-04-16T03:00:00.000Z",
+                  "email": "proponente_completo@bnp.com.br",
+                  "cellphone": "11111111111",
+                  "RG": "10.814.481-1",
+                  "CPF": "43004485311",
+                  "occupation": "teste"
+                },
+                "address": {
+                  "zipCode": "13050815",
+                  "place": "Rua Odilon Rodrigues Nunes",
+                  "number": "498",
+                  "complement": null,
+                  "district": "Jardim Capivari",
+                  "city": "Campinas-city",
+                  "state": "SP",
+                  "ibgeCode": null
+                },
+                "naturalPersonCulturalProfile": {
+                  "demographics": {
+                    "disabilityType": [],
+                    "academicCategory": []
+                  },
+                  "experienceAndCulturalParticipation": {
+                    "alreadyReceivedCulturalIncentivesOrScholarships": []
+                  },
+                  "objectivesAndMotivations": {
+                    "mainObjectiveWhenParticipating": [],
+                    "contributionToCulturalEnrichment": [],
+                    "childhoodAndAdolescenceCulturalParticipation": [],
+                    "participationInGroupsOrCulturalMovements": []
+                  }
+                },
+                "legalPersonCulturalProfile": {
+                  "structureAndResources": {
+                    "currentFundingSources": []
+                  },
+                  "experienceAndPartnerships": {
+                    "establishedPartnershipsWithOtherEntities": []
+                  },
+                  "socialAndCommunityImpact": {
+                    "contributionToSocialAndCulturalInclusion": [],
+                    "socialObjectivesBeyondArtistic": []
+                  },
+                  "type": "Cooperative"
+                },
+                "usersQueue": [],
+                "users": [
+                  {
+                    "annualCheckProponents": {
+                      "wasChecked": true,
+                      "date": "2026-03-10T18:32:07.041Z"
+                    },
+                    "profileImageURL": null,
+                    "provider": "local",
+                    "roles": [
+                      "proponent"
+                    ],
+                    "isMailChecked": false,
+                    "_id": "698a0d00e47a0e0820253e30",
+                    "firstName": "Bruno",
+                    "lastName": "teste",
+                    "email": "proponente_completo@bnp.com.br",
+                    "creationDate": "2026-02-09T16:36:16.740Z",
+                    "createdAt": "2026-02-09T16:36:16.743Z",
+                    "updatedAt": "2026-03-10T18:32:07.041Z",
+                    "defaultProponent": "698a0f28e47a0e0820253ff5"
+                  }
+                ],
+                "blockedUsers": [],
+                "members": [],
+                "_id": "698a16b0bb26b208226f043a",
+                "personType": "Cooperative",
+                "identification": {
+                  "CNPJ": "14580056000177",
+                  "corporateName": "Harvey - Tromp",
+                  "tradingName": "Bernhard - Brakus",
+                  "website": null,
+                  "profitNature": false,
+                  "corporationBirthDate": "1999-08-04T03:00:00.000Z",
+                  "isMei": false,
+                  "hasPartners": false
+                },
+                "legalPersonCulturalProfileV2": {
+                  "type": "LegalPerson",
+                  "characteristicsAndAreasOfOperation": {
+                    "typeOfInstitutionOrCollective": "foundation",
+                    "CNAE": "54645645"
+                  },
+                  "structureAndResources": {
+                    "numberOfMembersOrEmployees": "lessThan5",
+                    "annualBudget": "upTo80000",
+                    "currentFundingSources": [
+                      "corporateSponsorship",
+                      "donations"
+                    ],
+                    "currentFundingSourcesDescription": null
+                  },
+                  "experienceAndPartnerships": {
+                    "yearsOfOrganizationExperience": "between2And5",
+                    "typesOfPartnerships": [
+                      "corporateSponsorship",
+                      "technicalCollaboration"
+                    ],
+                    "numberOfPartnerships": "none",
+                    "mainArtisticCulturalSegment": "craftActivities",
+                    "mainArtisticCulturalSegmentDescription": null,
+                    "hasAccessedPublicCulturalFundingBefore": "no",
+                    "publicCulturalFundingSourcesAccessed": null,
+                    "publicCulturalFundingSourcesAccessedDescription": null
+                  },
+                  "socialAndCommunityImpact": {
+                    "socialImpactAndCulturalInclusionActions": [
+                      "professionalTraining",
+                      "culturalEducationAndMediation"
+                    ],
+                    "socialImpactAndCulturalInclusionActionsDescription": null,
+                    "socialObjectivesBeyondArtistic": [
+                      "communityDevelopment",
+                      "socialAndHumanDevelopment"
+                    ]
+                  },
+                  "responsable": {
+                    "type": "NaturalPerson",
+                    "demographics": {
+                      "sex": "male",
+                      "gender": "cisMan",
+                      "genderDescription": null,
+                      "ethnicity": "yellow",
+                      "belongsToTraditionalCommunity": "native",
+                      "belongsToTraditionalCommunityDescription": null,
+                      "maritalStatus": "stableUnion",
+                      "maritalStatusDescription": null,
+                      "hasDisability": "no",
+                      "disabilityType": null,
+                      "disabilityTypeDescription": null,
+                      "monthlyFamilyIncome": "3000To6000",
+                      "educationLevel": "undergraduateIncomplete",
+                      "educationKnowledgeArea": "biologicalSciences",
+                      "academicSegment": "Testar"
+                    },
+                    "experienceAndCulturalParticipation": {
+                      "yearsOfExperienceInCulturalArea": "between2And5",
+                      "hasAccessedCulturalPublicFunding": "no",
+                      "accessedCulturalPublicFunding": null,
+                      "accessedCulturalPublicFundingDescription": null,
+                      "numberOfProjectsApproved": null,
+                      "culturalActivityModeLastYear": [
+                        "institutionEmployee"
+                      ],
+                      "mainAreaOfCulturalActivitySegment": "architecture",
+                      "mainAreaOfCulturalActivitySegmentDescription": null,
+                      "mainAreaOfCulturalActivitySegmentOptions": [
+                        "architectureProjects",
+                        "heritagePreservation"
+                      ],
+                      "otherCulturalFields": [
+                        "craftActivities"
+                      ],
+                      "otherCulturalFieldsDescription": null,
+                      "mainArtisticCulturalOccupation": "aderecista",
+                      "mainArtisticCulturalOccupationDescription": null
+                    },
+                    "financialAspects": {
+                      "annualIncomeRelatedToCulturalActivity": "upTo18000",
+                      "financialDependenceOnCulturalActivity": "essentialButNotOnly"
+                    },
+                    "objectivesAndMotivations": {
+                      "mainObjectiveWhenParticipating": "communityContribution",
+                      "culturalContributionPlan": "culturalEducation",
+                      "culturalGroupParticipation": "formalParticipation",
+                      "childhoodAndAdolescenceCulturalParticipation": [
+                        "schoolGroups"
+                      ],
+                      "attendedInstitutionsNames": null
+                    }
+                  }
+                },
+                "creationUser": {
+                  "annualCheckProponents": {
+                    "wasChecked": true,
+                    "date": "2026-03-10T18:32:07.041Z"
+                  },
+                  "profileImageURL": null,
+                  "provider": "local",
+                  "roles": [
+                    "proponent"
+                  ],
+                  "isMailChecked": false,
+                  "_id": "698a0d00e47a0e0820253e30",
+                  "firstName": "Bruno",
+                  "lastName": "teste",
+                  "email": "proponente_completo@bnp.com.br",
+                  "creationDate": "2026-02-09T16:36:16.740Z",
+                  "createdAt": "2026-02-09T16:36:16.743Z",
+                  "updatedAt": "2026-03-10T18:32:07.041Z",
+                  "defaultProponent": "698a0f28e47a0e0820253ff5"
+                },
+                "status": "VALIDATED",
+                "creationDate": "2026-02-09T17:17:36.092Z",
+                "createdAt": "2026-02-09T17:17:36.096Z",
+                "updatedAt": "2026-02-09T17:17:36.096Z",
+                "__v": 0
+              },
+              {
+                "contactDetails": {
+                  "address": {
+                    "zipCode": "09090901",
+                    "place": "Avenida Dom Jorge Marcos de Oliveira",
+                    "number": "208",
+                    "complement": "Kutch - Dare",
+                    "district": "Vila Guiomar",
+                    "city": "SantoAndré-city",
+                    "state": "SP",
+                    "ibgeCode": "3547809",
+                    "cityName": "Santo André"
+                  },
+                  "isMailChecked": false,
+                  "responsibleName": "Gretchen Padberg",
+                  "responsibleSocialName": "Travis Jacobson Social Name",
+                  "birthDate": "1999-04-20T03:00:00.000Z",
+                  "email": "proponente_completo@bnp.com",
+                  "cellphone": "94759364534",
+                  "altPhoneNumber": "",
+                  "phoneNumber": "",
+                  "RG": "987349823",
+                  "CPF": "00465873308",
+                  "occupation": "Human Tactics Executive"
+                },
+                "address": {
+                  "zipCode": "01310200",
+                  "place": "Avenida Paulista",
+                  "number": "336",
+                  "complement": "Stoltenberg, Emard and Jerde",
+                  "district": "Bela Vista",
+                  "city": "SãoPaulo-city",
+                  "state": "SP",
+                  "ibgeCode": "3550308",
+                  "cityName": "São Paulo"
+                },
+                "naturalPersonCulturalProfile": {
+                  "demographics": {
+                    "disabilityType": [],
+                    "academicCategory": []
+                  },
+                  "experienceAndCulturalParticipation": {
+                    "alreadyReceivedCulturalIncentivesOrScholarships": []
+                  },
+                  "objectivesAndMotivations": {
+                    "mainObjectiveWhenParticipating": [],
+                    "contributionToCulturalEnrichment": [],
+                    "childhoodAndAdolescenceCulturalParticipation": [],
+                    "participationInGroupsOrCulturalMovements": []
+                  }
+                },
+                "legalPersonCulturalProfile": {
+                  "structureAndResources": {
+                    "currentFundingSources": []
+                  },
+                  "experienceAndPartnerships": {
+                    "establishedPartnershipsWithOtherEntities": []
+                  },
+                  "socialAndCommunityImpact": {
+                    "contributionToSocialAndCulturalInclusion": [],
+                    "socialObjectivesBeyondArtistic": []
+                  },
+                  "type": "Collective"
+                },
+                "usersQueue": [],
+                "users": [
+                  {
+                    "annualCheckProponents": {
+                      "wasChecked": true,
+                      "date": "2026-03-10T18:32:07.041Z"
+                    },
+                    "profileImageURL": null,
+                    "provider": "local",
+                    "roles": [
+                      "proponent"
+                    ],
+                    "isMailChecked": false,
+                    "_id": "698a0d00e47a0e0820253e30",
+                    "firstName": "Bruno",
+                    "lastName": "teste",
+                    "email": "proponente_completo@bnp.com.br",
+                    "creationDate": "2026-02-09T16:36:16.740Z",
+                    "createdAt": "2026-02-09T16:36:16.743Z",
+                    "updatedAt": "2026-03-10T18:32:07.041Z",
+                    "defaultProponent": "698a0f28e47a0e0820253ff5"
+                  }
+                ],
+                "blockedUsers": [],
+                "members": [
+                  {
+                    "_id": "698a16e3bb26b208226f043c",
+                    "proponentId": "698a16ddbb26b208226f043b",
+                    "linkedProponentId": null,
+                    "name": "Kerry Russel",
+                    "CPF": "85322516840",
+                    "RG": "923874982374",
+                    "birthDate": "1996-05-31T00:00:00.000Z",
+                    "socialName": "Constance Little Social Name",
+                    "occupation": "Teste",
+                    "address": {
+                      "zipCode": "09090-901",
+                      "place": "Avenida Dom Jorge Marcos de Oliveira",
+                      "number": "43",
+                      "complement": "APT, 23",
+                      "district": "Vila Guiomar",
+                      "city": "SantoAndré-city",
+                      "state": "SP",
+                      "ibgeCode": "3547809"
+                    },
+                    "type": "COLLECTIVE_MEMBER"
+                  },
+                  {
+                    "_id": "698a16f3bb26b208226f043d",
+                    "proponentId": "698a16ddbb26b208226f043b",
+                    "linkedProponentId": null,
+                    "name": "Susan Hudson",
+                    "CPF": "34847536096",
+                    "RG": "923874982374",
+                    "birthDate": "1996-05-31T00:00:00.000Z",
+                    "socialName": "Heidi Koss Social Name",
+                    "occupation": "Teste",
+                    "address": {
+                      "zipCode": "09090-901",
+                      "place": "Avenida Dom Jorge Marcos de Oliveira",
+                      "number": "43",
+                      "complement": "APT, 23",
+                      "district": "Vila Guiomar",
+                      "city": "SantoAndré-city",
+                      "state": "SP",
+                      "ibgeCode": "3547809"
+                    },
+                    "type": "COLLECTIVE_MEMBER"
+                  },
+                  {
+                    "_id": "698a16f9bb26b208226f043e",
+                    "proponentId": "698a16ddbb26b208226f043b",
+                    "linkedProponentId": null,
+                    "name": "Jon Miller",
+                    "CPF": "43157806424",
+                    "RG": "923874982374",
+                    "birthDate": "1996-05-31T00:00:00.000Z",
+                    "occupation": "Teste",
+                    "address": {
+                      "zipCode": "09090-901",
+                      "place": "Avenida Dom Jorge Marcos de Oliveira",
+                      "number": "43",
+                      "complement": "APT, 23",
+                      "district": "Vila Guiomar",
+                      "city": "SantoAndré-city",
+                      "state": "SP",
+                      "ibgeCode": "3547809"
+                    },
+                    "type": "COLLECTIVE_MEMBER"
+                  }
+                ],
+                "_id": "698a16ddbb26b208226f043b",
+                "personType": "Collective",
+                "identification": {
+                  "corporateName": "Muller, Schimmel and Homenick",
+                  "website": "",
+                  "corporationBirthDate": "1999-04-20T03:00:00.000Z"
+                },
+                "naturalPersonCulturalProfileV2": {
+                  "type": "NaturalPerson",
+                  "demographics": {
+                    "sex": "male",
+                    "gender": "cisMan",
+                    "genderDescription": null,
+                    "ethnicity": "white",
+                    "belongsToTraditionalCommunity": "native",
+                    "belongsToTraditionalCommunityDescription": null,
+                    "maritalStatus": "stableUnion",
+                    "maritalStatusDescription": null,
+                    "hasDisability": "no",
+                    "disabilityType": null,
+                    "disabilityTypeDescription": null,
+                    "monthlyFamilyIncome": "1500To3000",
+                    "educationLevel": "postgraduateLatoSensu",
+                    "educationKnowledgeArea": "biologicalSciences",
+                    "academicSegment": "Maxime quis dolore assumenda nobis."
+                  },
+                  "experienceAndCulturalParticipation": {
+                    "yearsOfExperienceInCulturalArea": "lessThan2",
+                    "hasAccessedCulturalPublicFunding": "no",
+                    "accessedCulturalPublicFunding": null,
+                    "accessedCulturalPublicFundingDescription": null,
+                    "numberOfProjectsApproved": null,
+                    "culturalActivityModeLastYear": [
+                      "otherSectorEmployee",
+                      "institutionEmployee"
+                    ],
+                    "mainAreaOfCulturalActivitySegment": "craftActivities",
+                    "mainAreaOfCulturalActivitySegmentDescription": null,
+                    "mainAreaOfCulturalActivitySegmentOptions": [
+                      "handcraftedProduction",
+                      "manualCrafts"
+                    ],
+                    "otherCulturalFields": [
+                      "performingArts"
+                    ],
+                    "otherCulturalFieldsDescription": null,
+                    "mainArtisticCulturalOccupation": "aderecista",
+                    "mainArtisticCulturalOccupationDescription": null
+                  },
+                  "financialAspects": {
+                    "annualIncomeRelatedToCulturalActivity": "upTo18000",
+                    "financialDependenceOnCulturalActivity": "essentialButNotOnly"
+                  },
+                  "objectivesAndMotivations": {
+                    "mainObjectiveWhenParticipating": "communityContribution",
+                    "culturalContributionPlan": "diversityInclusion",
+                    "culturalGroupParticipation": "formalParticipation",
+                    "childhoodAndAdolescenceCulturalParticipation": [
+                      "artCourses",
+                      "schoolGroups"
+                    ],
+                    "attendedInstitutionsNames": "Id earum cumque saepe tempore possimus possimus deleniti dignissimos."
+                  }
+                },
+                "creationUser": {
+                  "annualCheckProponents": {
+                    "wasChecked": true,
+                    "date": "2026-03-10T18:32:07.041Z"
+                  },
+                  "profileImageURL": null,
+                  "provider": "local",
+                  "roles": [
+                    "proponent"
+                  ],
+                  "isMailChecked": false,
+                  "_id": "698a0d00e47a0e0820253e30",
+                  "firstName": "Bruno",
+                  "lastName": "teste",
+                  "email": "proponente_completo@bnp.com.br",
+                  "creationDate": "2026-02-09T16:36:16.740Z",
+                  "createdAt": "2026-02-09T16:36:16.743Z",
+                  "updatedAt": "2026-03-10T18:32:07.041Z",
+                  "defaultProponent": "698a0f28e47a0e0820253ff5"
+                },
+                "status": "VALIDATED",
+                "creationDate": "2026-02-09T17:18:21.381Z",
+                "createdAt": "2026-02-09T17:18:21.383Z",
+                "updatedAt": "2026-02-09T17:18:49.237Z",
+                "__v": 0
+              },
+              {
+                "contactDetails": {
+                  "address": {
+                    "zipCode": "09090901",
+                    "place": "Avenida Dom Jorge Marcos de Oliveira",
+                    "number": "208",
+                    "complement": "Kutch - Dare",
+                    "district": "Vila Guiomar",
+                    "city": "SantoAndré-city",
+                    "state": "SP",
+                    "ibgeCode": "3547809",
+                    "cityName": "Santo André"
+                  },
+                  "isMailChecked": false,
+                  "responsibleName": "Dr. Felipe Breitenberg Jr.",
+                  "birthDate": "1999-04-20T03:00:00.000Z",
+                  "email": "proponente_completo@bnp.com",
+                  "cellphone": "94759364534",
+                  "altPhoneNumber": "",
+                  "phoneNumber": "",
+                  "RG": "987349823",
+                  "CPF": "75206020362",
+                  "occupation": "Human Tactics Executive"
+                },
+                "address": {
+                  "zipCode": "01310200",
+                  "place": "Avenida Paulista",
+                  "number": "336",
+                  "complement": "Stoltenberg, Emard and Jerde",
+                  "district": "Bela Vista",
+                  "city": "SãoPaulo-city",
+                  "state": "SP",
+                  "ibgeCode": "3550308",
+                  "cityName": "São Paulo"
+                },
+                "naturalPersonCulturalProfile": {
+                  "demographics": {
+                    "disabilityType": [],
+                    "academicCategory": []
+                  },
+                  "experienceAndCulturalParticipation": {
+                    "alreadyReceivedCulturalIncentivesOrScholarships": []
+                  },
+                  "objectivesAndMotivations": {
+                    "mainObjectiveWhenParticipating": [],
+                    "contributionToCulturalEnrichment": [],
+                    "childhoodAndAdolescenceCulturalParticipation": [],
+                    "participationInGroupsOrCulturalMovements": []
+                  }
+                },
+                "legalPersonCulturalProfile": {
+                  "structureAndResources": {
+                    "currentFundingSources": []
+                  },
+                  "experienceAndPartnerships": {
+                    "establishedPartnershipsWithOtherEntities": []
+                  },
+                  "socialAndCommunityImpact": {
+                    "contributionToSocialAndCulturalInclusion": [],
+                    "socialObjectivesBeyondArtistic": []
+                  },
+                  "type": "Collective"
+                },
+                "usersQueue": [],
+                "users": [
+                  {
+                    "annualCheckProponents": {
+                      "wasChecked": true,
+                      "date": "2026-03-10T18:32:07.041Z"
+                    },
+                    "profileImageURL": null,
+                    "provider": "local",
+                    "roles": [
+                      "proponent"
+                    ],
+                    "isMailChecked": false,
+                    "_id": "698a0d00e47a0e0820253e30",
+                    "firstName": "Bruno",
+                    "lastName": "teste",
+                    "email": "proponente_completo@bnp.com.br",
+                    "creationDate": "2026-02-09T16:36:16.740Z",
+                    "createdAt": "2026-02-09T16:36:16.743Z",
+                    "updatedAt": "2026-03-10T18:32:07.041Z",
+                    "defaultProponent": "698a0f28e47a0e0820253ff5"
+                  }
+                ],
+                "blockedUsers": [],
+                "members": [
+                  {
+                    "_id": "698a170ebb26b208226f0440",
+                    "proponentId": "698a170bbb26b208226f043f",
+                    "linkedProponentId": null,
+                    "name": "Kyle Fisher",
+                    "CPF": "43225546607",
+                    "RG": "923874982374",
+                    "birthDate": "1996-05-31T00:00:00.000Z",
+                    "occupation": "Teste",
+                    "address": {
+                      "zipCode": "09090-901",
+                      "place": "Avenida Dom Jorge Marcos de Oliveira",
+                      "number": "43",
+                      "complement": "APT, 23",
+                      "district": "Vila Guiomar",
+                      "city": "SantoAndré-city",
+                      "state": "SP",
+                      "ibgeCode": "3547809"
+                    },
+                    "type": "COLLECTIVE_MEMBER"
+                  },
+                  {
+                    "_id": "698a1710bb26b208226f0441",
+                    "proponentId": "698a170bbb26b208226f043f",
+                    "linkedProponentId": null,
+                    "name": "Jay Kunde",
+                    "CPF": "33616052378",
+                    "RG": "923874982374",
+                    "birthDate": "1996-05-31T00:00:00.000Z",
+                    "occupation": "Teste",
+                    "address": {
+                      "zipCode": "09090-901",
+                      "place": "Avenida Dom Jorge Marcos de Oliveira",
+                      "number": "43",
+                      "complement": "APT, 23",
+                      "district": "Vila Guiomar",
+                      "city": "SantoAndré-city",
+                      "state": "SP",
+                      "ibgeCode": "3547809"
+                    },
+                    "type": "COLLECTIVE_MEMBER"
+                  },
+                  {
+                    "_id": "698a1712bb26b208226f0442",
+                    "proponentId": "698a170bbb26b208226f043f",
+                    "linkedProponentId": null,
+                    "name": "Garrett Wehner",
+                    "CPF": "13230352300",
+                    "RG": "923874982374",
+                    "birthDate": "1996-05-31T00:00:00.000Z",
+                    "socialName": "Timmy Schmeler Social Name",
+                    "occupation": "Teste",
+                    "address": {
+                      "zipCode": "09090-901",
+                      "place": "Avenida Dom Jorge Marcos de Oliveira",
+                      "number": "43",
+                      "complement": "APT, 23",
+                      "district": "Vila Guiomar",
+                      "city": "SantoAndré-city",
+                      "state": "SP",
+                      "ibgeCode": "3547809"
+                    },
+                    "type": "COLLECTIVE_MEMBER"
+                  }
+                ],
+                "_id": "698a170bbb26b208226f043f",
+                "personType": "Collective",
+                "identification": {
+                  "corporateName": "Jacobs - Reynolds",
+                  "website": "",
+                  "corporationBirthDate": "1999-04-20T03:00:00.000Z"
+                },
+                "naturalPersonCulturalProfileV2": {
+                  "type": "NaturalPerson",
+                  "demographics": {
+                    "sex": "male",
+                    "gender": "cisMan",
+                    "genderDescription": null,
+                    "ethnicity": "white",
+                    "belongsToTraditionalCommunity": "native",
+                    "belongsToTraditionalCommunityDescription": null,
+                    "maritalStatus": "stableUnion",
+                    "maritalStatusDescription": null,
+                    "hasDisability": "no",
+                    "disabilityType": null,
+                    "disabilityTypeDescription": null,
+                    "monthlyFamilyIncome": "1500To3000",
+                    "educationLevel": "postgraduateLatoSensu",
+                    "educationKnowledgeArea": "biologicalSciences",
+                    "academicSegment": "Maxime quis dolore assumenda nobis."
+                  },
+                  "experienceAndCulturalParticipation": {
+                    "yearsOfExperienceInCulturalArea": "lessThan2",
+                    "hasAccessedCulturalPublicFunding": "no",
+                    "accessedCulturalPublicFunding": null,
+                    "accessedCulturalPublicFundingDescription": null,
+                    "numberOfProjectsApproved": null,
+                    "culturalActivityModeLastYear": [
+                      "otherSectorEmployee",
+                      "institutionEmployee"
+                    ],
+                    "mainAreaOfCulturalActivitySegment": "craftActivities",
+                    "mainAreaOfCulturalActivitySegmentDescription": null,
+                    "mainAreaOfCulturalActivitySegmentOptions": [
+                      "handcraftedProduction",
+                      "manualCrafts"
+                    ],
+                    "otherCulturalFields": [
+                      "performingArts"
+                    ],
+                    "otherCulturalFieldsDescription": null,
+                    "mainArtisticCulturalOccupation": "aderecista",
+                    "mainArtisticCulturalOccupationDescription": null
+                  },
+                  "financialAspects": {
+                    "annualIncomeRelatedToCulturalActivity": "upTo18000",
+                    "financialDependenceOnCulturalActivity": "essentialButNotOnly"
+                  },
+                  "objectivesAndMotivations": {
+                    "mainObjectiveWhenParticipating": "communityContribution",
+                    "culturalContributionPlan": "diversityInclusion",
+                    "culturalGroupParticipation": "formalParticipation",
+                    "childhoodAndAdolescenceCulturalParticipation": [
+                      "artCourses",
+                      "schoolGroups"
+                    ],
+                    "attendedInstitutionsNames": "Id earum cumque saepe tempore possimus possimus deleniti dignissimos."
+                  }
+                },
+                "creationUser": {
+                  "annualCheckProponents": {
+                    "wasChecked": true,
+                    "date": "2026-03-10T18:32:07.041Z"
+                  },
+                  "profileImageURL": null,
+                  "provider": "local",
+                  "roles": [
+                    "proponent"
+                  ],
+                  "isMailChecked": false,
+                  "_id": "698a0d00e47a0e0820253e30",
+                  "firstName": "Bruno",
+                  "lastName": "teste",
+                  "email": "proponente_completo@bnp.com.br",
+                  "creationDate": "2026-02-09T16:36:16.740Z",
+                  "createdAt": "2026-02-09T16:36:16.743Z",
+                  "updatedAt": "2026-03-10T18:32:07.041Z",
+                  "defaultProponent": "698a0f28e47a0e0820253ff5"
+                },
+                "status": "VALIDATED",
+                "creationDate": "2026-02-09T17:19:07.164Z",
+                "createdAt": "2026-02-09T17:19:07.166Z",
+                "updatedAt": "2026-02-09T17:19:14.599Z",
+                "__v": 0
+              }
+            ],
+            "minimumCollectiveMembers": 3
+          }
+        }
+      '''
+    }
+  }
+}

@@ -1,0 +1,48 @@
+meta {
+  name: Create Collective member
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{BASE_URL}}/proponent/createCollectiveMember
+  body: json
+  auth: inherit
+}
+
+headers {
+  Origin: {{BASE_URL}}
+}
+
+body:json {
+  {
+      "proponentId": "{{collectiveId}}",
+      "linkedProponentId": null,
+      "name": "{{$randomFullName}}",
+      "CPF": "{{randomCpf}}",
+      "RG": "923874982374",
+      "birthDate": "31051996",
+      "occupation": "Teste",
+      "address": {
+          "zipCode": "09090-901",
+          "place": "Avenida Dom Jorge Marcos de Oliveira",
+          "number": "43",
+          "complement": "APT, 23",
+          "district": "Vila Guiomar",
+          "city": "SantoAndré-city",
+          "state": "SP",
+          "ibgeCode": "3547809"
+      }
+  }
+}
+
+assert {
+  res.status: eq 200
+  res.body.STATUS: eq SUCCESS
+  res.body.MESSAGE: eq Successfully created the collective member
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

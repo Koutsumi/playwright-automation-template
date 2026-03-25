@@ -1,0 +1,177 @@
+meta {
+  name: Create Legal person
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{BASE_URL}}/proponent
+  body: json
+  auth: inherit
+}
+
+headers {
+  Origin: {{BASE_URL}}
+}
+
+body:json {
+  {
+      "proponent": {
+          "personType": "LegalPerson",
+          "identification": {
+              "CNPJ": "{{randomCnpj}}",
+              "corporateName": "{{$randomCompanyName}}",
+              "tradingName": "{{$randomCompanyName}}",
+              "website": null,
+              "profitNature": false,
+              "corporationBirthDate": "1999-08-04T03:00:00.000Z",
+              "isMei": false,
+              "hasPartners": false
+          },
+          "contactDetails": {
+              "responsibleName": "{{$randomFullName}}",
+              "responsibleSocialName": "{{$randomFullName}} Social Name",
+              "birthDate": "2004-04-16T03:00:00.000Z",
+              "email": "proponente_completo@bnp.com.br",
+              "cellphone": "11111111111",
+              "RG": "1111111111",
+              "CPF": "{{randomCpf}}",
+              "occupation": "teste",
+              "address": {
+                  "zipCode": "12311240",
+                  "place": "Rua Francisca de Freitas Martins",
+                  "number": "11",
+                  "complement": null,
+                  "district": "Parque Califórnia",
+                  "city": "Jacareí-city",
+                  "state": "SP",
+                  "ibgeCode": null,
+                  "cityName": null
+              }
+          },
+          "address": {
+              "zipCode": "13050421",
+              "place": "Rua Tietê",
+              "number": "932",
+              "complement": null,
+              "district": "Cidade Jardim",
+              "city": "Campinas-city",
+              "state": "SP",
+              "ibgeCode": null
+          },
+          "legalPersonCulturalProfile": null,
+          "legalPersonCulturalProfileV2": {
+              "type": "LegalPerson",
+              "characteristicsAndAreasOfOperation": {
+                  "typeOfInstitutionOrCollective": "foundation",
+                  "CNAE": "54645645"
+              },
+              "structureAndResources": {
+                  "numberOfMembersOrEmployees": "lessThan5",
+                  "annualBudget": "upTo80000",
+                  "currentFundingSources": [
+                      "corporateSponsorship",
+                      "donations"
+                  ],
+                  "currentFundingSourcesDescription": null
+              },
+              "experienceAndPartnerships": {
+                  "yearsOfOrganizationExperience": "between2And5",
+                  "typesOfPartnerships": [
+                      "corporateSponsorship",
+                      "technicalCollaboration"
+                  ],
+                  "numberOfPartnerships": "none",
+                  "mainArtisticCulturalSegment": "craftActivities",
+                  "mainArtisticCulturalSegmentDescription": null,
+                  "hasAccessedPublicCulturalFundingBefore": "no",
+                  "publicCulturalFundingSourcesAccessed": null,
+                  "publicCulturalFundingSourcesAccessedDescription": null
+              },
+              "socialAndCommunityImpact": {
+                  "socialImpactAndCulturalInclusionActions": [
+                      "professionalTraining",
+                      "culturalEducationAndMediation"
+                  ],
+                  "socialImpactAndCulturalInclusionActionsDescription": null,
+                  "socialObjectivesBeyondArtistic": [
+                      "communityDevelopment",
+                      "socialAndHumanDevelopment"
+                  ]
+              },
+              "responsable": {
+                  "type": "NaturalPerson",
+                  "demographics": {
+                      "sex": "male",
+                      "gender": "cisMan",
+                      "genderDescription": null,
+                      "ethnicity": "yellow",
+                      "belongsToTraditionalCommunity": "native",
+                      "belongsToTraditionalCommunityDescription": null,
+                      "maritalStatus": "stableUnion",
+                      "maritalStatusDescription": null,
+                      "hasDisability": "no",
+                      "disabilityType": null,
+                      "disabilityTypeDescription": null,
+                      "monthlyFamilyIncome": "3000To6000",
+                      "educationLevel": "undergraduateIncomplete",
+                      "educationKnowledgeArea": "biologicalSciences",
+                      "academicSegment": "Testar"
+                  },
+                  "experienceAndCulturalParticipation": {
+                      "yearsOfExperienceInCulturalArea": "between2And5",
+                      "hasAccessedCulturalPublicFunding": "no",
+                      "accessedCulturalPublicFunding": null,
+                      "accessedCulturalPublicFundingDescription": null,
+                      "numberOfProjectsApproved": null,
+                      "culturalActivityModeLastYear": [
+                          "institutionEmployee"
+                      ],
+                      "mainAreaOfCulturalActivitySegment": "architecture",
+                      "mainAreaOfCulturalActivitySegmentDescription": null,
+                      "mainAreaOfCulturalActivitySegmentOptions": [
+                          "architectureProjects",
+                          "heritagePreservation"
+                      ],
+                      "otherCulturalFields": [
+                          "craftActivities"
+                      ],
+                      "otherCulturalFieldsDescription": null,
+                      "mainArtisticCulturalOccupation": "aderecista",
+                      "mainArtisticCulturalOccupationDescription": null
+                  },
+                  "financialAspects": {
+                      "annualIncomeRelatedToCulturalActivity": "upTo18000",
+                      "financialDependenceOnCulturalActivity": "essentialButNotOnly"
+                  },
+                  "objectivesAndMotivations": {
+                      "mainObjectiveWhenParticipating": "communityContribution",
+                      "culturalContributionPlan": "culturalEducation",
+                      "culturalGroupParticipation": "formalParticipation",
+                      "childhoodAndAdolescenceCulturalParticipation": [
+                          "schoolGroups"
+                      ],
+                      "attendedInstitutionsNames": null
+                  }
+              }
+          }
+      }
+  }
+}
+
+assert {
+  res.status: eq 200
+  res.body.STATUS: eq SUCCESS
+  res.body.MESSAGE: eq Successfully created the proponent
+}
+
+script:post-response {
+  const data = res.getBody()
+  bru.setEnvVar("legalPersonId", data.DATA._id)
+  
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

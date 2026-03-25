@@ -1,0 +1,31 @@
+meta {
+  name: Create link - Unathorized
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{BASE_URL}}/shareData/create
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "noticeId": "695e3f920def3c082013cb91",
+      "expirationDate": "2026-01-15T17:57:46.317Z",
+      "type": "PITCH"
+  }
+}
+
+assert {
+  res.status: eq 403
+  res.body.STATUS: eq DENIED
+  res.body.MESSAGE: eq User is not authorized to access the requested resource
+  res.body.DATA: isEmpty
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

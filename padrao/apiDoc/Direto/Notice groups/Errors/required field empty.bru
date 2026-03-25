@@ -1,0 +1,31 @@
+meta {
+  name: required field empty
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{BASE_URL}}/notice-groups/
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "name": null,
+      "description": "test",
+      "restrictSubmissions": false
+  }
+}
+
+assert {
+  res.status: eq 400
+  res.body.STATUS: eq FAILURE
+  res.body.MESSAGE: eq The notice group must have a valid name.
+  res.body.PTMESSAGE: eq Informe um nome válido para o grupo de editais.
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

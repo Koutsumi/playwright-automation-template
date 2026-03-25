@@ -1,0 +1,25 @@
+meta {
+  name: Active links
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{BASE_URL}}/shareData?noticeId={{noticeId}}&type=PITCH
+  body: none
+  auth: inherit
+}
+
+params:query {
+  noticeId: {{noticeId}}
+  type: PITCH
+}
+
+vars:pre-request {
+  noticeId: 695e3f920def3c082013cb91
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

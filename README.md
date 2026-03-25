@@ -1,4 +1,4 @@
-# PlayPattern
+# 🎭 Playwright Automation Template
 
 Template de automação com `Playwright` para projetos de QA, com padrão único de estrutura, organização, nomenclatura e documentação.
 

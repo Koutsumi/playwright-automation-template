@@ -1,4 +1,5 @@
 export default {
+  base: process.env.VITEPRESS_BASE || '/',
   title: 'PlayPattern',
   description: 'Template de padrões para projetos de automação com Playwright',
   themeConfig: {
